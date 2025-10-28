@@ -2,7 +2,7 @@
 
 A personal portfolio website showcasing creative design and development work.
 
-**Live Site**: [maruska2006.github.io/mariya-batan](https://maruska2006.github.io/mariya-batan/)
+**Live Site**: 
 
 ## About
 
