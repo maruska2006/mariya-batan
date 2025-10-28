@@ -2,7 +2,7 @@
 
 A personal portfolio website showcasing creative design and development work.
 
-**Live Site**: 
+**Live Site**: [riyablin.github.io/mariya-batan-portfolio](https://riyablin.github.io/mariya-batan-portfolio/)
 
 ## About
 
