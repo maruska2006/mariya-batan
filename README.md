@@ -31,7 +31,7 @@ This project is built with modern web technologies:
 
 ```sh
 # Clone the repository
-git clone https://github.com/maruska2006/mariya-batan.git
+git clone https://github.com/riyablin/mariya-batan-portfolio.git
 
 # Navigate to the project directory
 cd mariya-batan
