@@ -34,7 +34,7 @@ This project is built with modern web technologies:
 git clone https://github.com/riyablin/mariya-batan-portfolio.git
 
 # Navigate to the project directory
-cd mariya-batan
+cd mariya-batan-portfolio
 
 # Install dependencies
 npm install
@@ -67,7 +67,7 @@ The built files will be in the `dist/` directory.
 ## Project Structure
 
 ```
-mariya-batan/
+mariya-batan-portfolio/
 ├── src/
 │   ├── components/     # React components
 │   ├── pages/         # Page components

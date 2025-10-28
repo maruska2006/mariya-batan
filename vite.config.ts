@@ -4,7 +4,7 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig(() => ({
-  base: '/mariya-batan/',
+  base: '/mariya-batan-portfolio/',
   server: {
     host: "::",
     port: 8080,
