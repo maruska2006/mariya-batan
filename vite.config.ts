@@ -16,8 +16,8 @@ export default defineConfig(() => ({
     },
   },
   build: {
-    assetsInlineLimit: 0, // Don't inline large images
-    rollupOptions: {
+    assetsInlineLimit: 0,
+    rollupOptions: { 
       output: {
         assetFileNames: 'assets/[name][extname]',
       },
