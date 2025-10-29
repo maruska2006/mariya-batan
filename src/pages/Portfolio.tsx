@@ -598,7 +598,7 @@ const Portfolio = () => {
                         className="group relative bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-primary/20 flex flex-col h-full"
                       >
                     {/* Project Cover Image */}
-                    <div className="relative w-full flex-shrink-0 overflow-hidden" style={{ height: '200px', '@media (minWidth: 640px)': { height: '225px' }, '@media (minWidth: 768px)': { height: '250px' } }}>
+                    <div className="relative w-full flex-shrink-0 overflow-hidden bg-muted" style={{ height: '200px', '@media (minWidth: 640px)': { height: '225px' }, '@media (minWidth: 768px)': { height: '250px' } }}>
                       {/* Skeleton loader background */}
                       {!loadedThumbnails.has(project.id) && (
                         <div className="absolute inset-0 bg-muted animate-pulse" />
@@ -608,7 +608,8 @@ const Portfolio = () => {
                         src={project.thumbnail}
                         alt={project.title}
                         className={cn(
-                          "w-full h-full object-cover transition-all duration-500 group-hover:scale-110",
+                          "w-full h-full transition-all duration-500",
+                          project.id === "portfolio-website" ? "object-contain" : "object-cover group-hover:scale-110",
                           loadedThumbnails.has(project.id) ? "opacity-100" : "opacity-0"
                         )}
                         loading="lazy"
