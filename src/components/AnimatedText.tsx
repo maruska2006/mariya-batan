@@ -6,9 +6,10 @@ interface AnimatedTextProps {
   className?: string;
   delay?: number;
   highlightWords?: string[];
+  largeSpacing?: boolean;
 }
 
-export const AnimatedText = ({ text, className, delay = 0, highlightWords = [] }: AnimatedTextProps) => {
+export const AnimatedText = ({ text, className, delay = 0, highlightWords = [], largeSpacing = false }: AnimatedTextProps) => {
   const [visibleWords, setVisibleWords] = useState<number>(0);
   const words = text.split(" ");
 
@@ -32,7 +33,8 @@ export const AnimatedText = ({ text, className, delay = 0, highlightWords = [] }
           <span
             key={index}
             className={cn(
-              "inline-block opacity-0 mr-2 sm:mr-4 md:mr-8 lg:mr-12",
+              "inline-block opacity-0",
+              largeSpacing ? "mr-2 sm:mr-4 md:mr-8 lg:mr-12" : "mr-2",
               index < visibleWords && "animate-fade-in-word",
               isHighlighted && "font-bold text-foreground"
             )}
