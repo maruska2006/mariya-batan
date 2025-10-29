@@ -524,38 +524,38 @@ const Portfolio = () => {
     <TooltipProvider>
       <div className="min-h-screen bg-background">
         <Header />
-      <main className="pt-32 px-6">
+      <main className="pt-20 sm:pt-24 md:pt-32 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-6xl">
           {!selectedCategory ? (
-            <div className="flex flex-col items-center justify-start pt-8">
-              <div className="space-y-8">
+            <div className="flex flex-col items-center justify-start pt-6 sm:pt-8">
+              <div className="space-y-6 sm:space-y-8">
                 {/* Illustration above My Work */}
-                <div className="w-full flex justify-center pb-4">
+                <div className="w-full flex justify-center pb-3 sm:pb-4">
                   <img
                     src={`${import.meta.env.BASE_URL}ямногорук.svg`}
                     alt="Hands illustration"
-                    className="w-full max-w-32 h-auto object-contain opacity-0 animate-bounce-in"
+                    className="w-full max-w-24 sm:max-w-28 md:max-w-32 h-auto object-contain opacity-0 animate-bounce-in"
                     style={{ animationDelay: "0.3s" }}
                   />
                 </div>
-                
-                <h1 className="text-6xl md:text-7xl font-light text-foreground text-center opacity-0 animate-fade-in">
+
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground text-center opacity-0 animate-fade-in">
                   My Work
                 </h1>
-                <div className="flex flex-col md:flex-row gap-6 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 md:gap-6 justify-center w-full px-2 sm:px-0">
                   {categories.map((category, index) => (
                     <button
                       key={category.id}
                       onClick={() => setSelectedCategory(category.id)}
                       className={cn(
-                        "group relative px-8 py-8 bg-card border border-border rounded-lg",
+                        "group relative px-6 py-6 sm:px-8 sm:py-8 bg-card border border-border rounded-lg",
                         "transition-all duration-500 hover:scale-105 hover:shadow-lg",
                         "opacity-0 animate-scale-in",
-                        "w-full md:w-64 h-32 flex items-center justify-center"
+                        "w-full sm:w-auto md:w-64 h-28 sm:h-32 flex items-center justify-center"
                       )}
                       style={{ animationDelay: `${index * 0.1}s` }}
                     >
-                      <span className="text-2xl font-light text-foreground group-hover:text-primary transition-colors text-center whitespace-nowrap">
+                      <span className="text-xl sm:text-2xl font-light text-foreground group-hover:text-primary transition-colors text-center whitespace-nowrap">
                         {category.name}
                       </span>
                     </button>
@@ -564,9 +564,9 @@ const Portfolio = () => {
               </div>
             </div>
           ) : (
-            <div className="space-y-12">
-              <div className="flex items-center justify-between">
-                <h2 className="text-4xl md:text-5xl font-light text-foreground opacity-0 animate-fade-in">
+            <div className="space-y-8 sm:space-y-10 md:space-y-12">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-foreground opacity-0 animate-fade-in">
                   {categories.find((c) => c.id === selectedCategory)?.name}
                 </h2>
                 <button
@@ -576,14 +576,14 @@ const Portfolio = () => {
                     // Ensure URL is correct when going back to categories
                     window.history.replaceState({}, '', '/portfolio');
                   }}
-                  className="text-muted-foreground hover:text-foreground transition-colors opacity-0 animate-fade-in"
+                  className="text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors opacity-0 animate-fade-in whitespace-nowrap"
                   style={{ animationDelay: "0.1s" }}
                 >
                   ← Back to categories
                 </button>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {projects[selectedCategory].map((project, index) => (
                   <Tooltip key={project.id}>
                     <TooltipTrigger asChild>
@@ -592,48 +592,48 @@ const Portfolio = () => {
                         className="group relative bg-card border border-border rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-primary/20 flex flex-col h-full"
                       >
                     {/* Project Cover Image */}
-                    <div className="relative w-full flex-shrink-0 overflow-hidden" style={{ height: '250px' }}>
+                    <div className="relative w-full flex-shrink-0 overflow-hidden" style={{ height: '200px', '@media (minWidth: 640px)': { height: '225px' }, '@media (minWidth: 768px)': { height: '250px' } }}>
                       <img
                         src={project.thumbnail}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
                       />
                     </div>
-                    
+
                     {/* Project Info Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-4 left-4 right-4 text-white">
-                        <h3 className="text-lg font-semibold">{project.title}</h3>
+                      <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 right-3 sm:right-4 text-white">
+                        <h3 className="text-base sm:text-lg font-semibold">{project.title}</h3>
                       </div>
                     </div>
-                    
+
                     {/* Project Details */}
-                    <div className="p-4 flex flex-col flex-grow">
-                      <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    <div className="p-3 sm:p-4 flex flex-col flex-grow">
+                      <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2">
                         {project.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed mb-3 line-clamp-3">
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-3 line-clamp-3">
                         {project.description}
                       </p>
-                      
+
                       {/* Tags */}
                       <div className="flex flex-wrap gap-1 mb-3">
                         {project.tags.slice(0, 2).map((tag, tagIndex) => (
                           <span
                             key={tagIndex}
-                            className="px-2 py-1 bg-secondary/50 text-xs text-muted-foreground rounded-full"
+                            className="px-2 py-0.5 sm:py-1 bg-secondary/50 text-[10px] sm:text-xs text-muted-foreground rounded-full"
                           >
                             {tag}
                           </span>
                         ))}
                         {project.tags.length > 2 && (
-                          <span className="px-2 py-1 bg-secondary/50 text-xs text-muted-foreground rounded-full">
+                          <span className="px-2 py-0.5 sm:py-1 bg-secondary/50 text-[10px] sm:text-xs text-muted-foreground rounded-full">
                             +{project.tags.length - 2}
                           </span>
                         )}
                       </div>
-                      
-                      <div className="text-xs text-primary font-medium mt-auto">
+
+                      <div className="text-[10px] sm:text-xs text-primary font-medium mt-auto">
                         View Project →
                       </div>
                     </div>
@@ -650,20 +650,20 @@ const Portfolio = () => {
           
           {/* Scrolling Text Banner - Only on main page */}
           {!selectedCategory && (
-            <div className="w-full overflow-hidden relative mt-24">
+            <div className="w-full overflow-hidden relative mt-16 sm:mt-20 md:mt-24">
               {/* Top line */}
               <div className="absolute top-0 left-0 right-0 h-px bg-primary/30"></div>
-              
-              <div className="flex animate-scroll-infinite whitespace-nowrap py-8">
-                <div className="flex space-x-16">
+
+              <div className="flex animate-scroll-infinite whitespace-nowrap py-6 sm:py-8">
+                <div className="flex space-x-8 sm:space-x-12 md:space-x-16">
                   {Array.from({ length: 6 }, (_, i) => (
-                    <span key={i} className="text-2xl md:text-3xl font-bold text-foreground">
+                    <span key={i} className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground">
                       JACK OF ALL TRADES
                     </span>
                   ))}
                 </div>
               </div>
-              
+
               {/* Bottom line */}
               <div className="absolute bottom-0 left-0 right-0 h-px bg-primary/30"></div>
             </div>

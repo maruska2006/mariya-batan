@@ -29,18 +29,18 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-32 pb-20 px-6">
+      <main className="pt-20 sm:pt-24 md:pt-32 pb-12 sm:pb-16 md:pb-20 px-4 sm:px-6 lg:px-8">
         <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-20">
-            <h1 className="text-6xl md:text-7xl font-light text-foreground mb-6 opacity-0 animate-fade-in">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground mb-4 sm:mb-6 opacity-0 animate-fade-in">
               Services
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto px-4 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Thoughtful design crafted to reflect who you are.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             {services.map((service, index) => {
               const sectionId = service.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '') + '-service';
               return (
@@ -48,27 +48,27 @@ const Services = () => {
                   key={index}
                   id={sectionId}
                   className={cn(
-                    "group bg-card border border-border rounded-lg p-8",
+                    "group bg-card border border-border rounded-lg p-5 sm:p-6 md:p-8",
                     "transition-all duration-500 hover:shadow-xl hover:scale-[1.02]",
                     "opacity-0 animate-scale-in"
                   )}
                   style={{ animationDelay: `${index * 0.15}s` }}
                 >
-                <h2 className="text-3xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-foreground mb-3 sm:mb-4 group-hover:text-primary transition-colors">
                   {service.title}
                 </h2>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-sm sm:text-base text-muted-foreground mb-5 sm:mb-6 leading-relaxed">
                   {service.description}
                 </p>
-                
-                <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-foreground mb-3 uppercase tracking-wide">
+
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-xs sm:text-sm font-semibold text-foreground mb-2 sm:mb-3 uppercase tracking-wide">
                     What's Included
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5 sm:space-y-2">
                     {service.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-center text-muted-foreground">
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-3" />
+                      <li key={fIndex} className="flex items-center text-sm sm:text-base text-muted-foreground">
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full mr-2 sm:mr-3 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -82,22 +82,22 @@ const Services = () => {
           </div>
 
           {/* Pricing note */}
-          <div className="mt-8 text-center opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <p className="text-sm text-muted-foreground">
+          <div className="mt-6 sm:mt-8 text-center opacity-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <p className="text-xs sm:text-sm text-muted-foreground px-4">
               Every brief is unique — pricing is set individually.
             </p>
           </div>
 
-          <div className="mt-20 text-center bg-secondary/30 rounded-lg p-12 opacity-0 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-            <h3 className="text-3xl font-light text-foreground mb-4">
+          <div className="mt-12 sm:mt-16 md:mt-20 text-center bg-secondary/30 rounded-lg p-6 sm:p-8 md:p-12 opacity-0 animate-fade-in" style={{ animationDelay: "0.8s" }}>
+            <h3 className="text-2xl sm:text-3xl font-light text-foreground mb-3 sm:mb-4">
               Custom Projects
             </h3>
-            <p className="text-lg text-muted-foreground mb-6">
+            <p className="text-base sm:text-lg text-muted-foreground mb-5 sm:mb-6 px-4">
               Every project is unique. Let's discuss your specific needs and create a tailored solution.
             </p>
             <a
               href="/contact"
-              className="inline-block px-8 py-4 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+              className="inline-block px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
             >
               Get in Touch
             </a>

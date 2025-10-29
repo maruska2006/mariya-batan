@@ -34,15 +34,15 @@ export const ProjectCard = ({ title, description, image, index }: ProjectCardPro
           )}
         />
       </div>
-      
+
       <div
         className={cn(
-          "absolute bottom-0 left-0 right-0 p-6 transition-all duration-500 ease-out",
+          "absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6 transition-all duration-500 ease-out",
           isHovered ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
         )}
       >
-        <h3 className="text-2xl font-semibold text-background mb-2">{title}</h3>
-        <p className="text-background/90 text-sm">{description}</p>
+        <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-background mb-1 sm:mb-2">{title}</h3>
+        <p className="text-background/90 text-xs sm:text-sm">{description}</p>
       </div>
     </div>
   );

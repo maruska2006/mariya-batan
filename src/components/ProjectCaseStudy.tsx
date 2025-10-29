@@ -83,38 +83,38 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
         <div className="min-h-screen" onClick={(e) => e.stopPropagation()}>
           {/* Header */}
           <div className="sticky top-0 bg-background/95 backdrop-blur-lg border-b border-border z-10">
-            <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-              <div>
-                <h1 className="text-2xl font-light text-foreground">{project.title}</h1>
+            <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+              <div className="min-w-0 flex-1 pr-4">
+                <h1 className="text-lg sm:text-xl md:text-2xl font-light text-foreground truncate">{project.title}</h1>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                className="p-2 text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
             </div>
           </div>
 
           {/* Project Cover */}
-          <div className="relative h-[60vh] overflow-hidden">
+          <div className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] overflow-hidden">
             <img
               src={project.id === "portfolio-website" ? `${import.meta.env.BASE_URL}DFDC65E3-4603-47BD-8BBD-259F4D2795F5_1_105_c.png` : project.files[0]}
               alt={project.title}
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/40" />
-            <div className="absolute bottom-8 left-8 text-white">
-              <h2 className="text-4xl md:text-6xl font-light mb-4">{project.title}</h2>
+            <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-light mb-2 sm:mb-3 md:mb-4">{project.title}</h2>
               {project.description && (
-                <p className="text-lg mb-4 max-w-2xl">{project.description}</p>
+                <p className="text-sm sm:text-base md:text-lg mb-3 sm:mb-4 max-w-2xl">{project.description}</p>
               )}
               {project.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm"
+                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs sm:text-sm"
                     >
                       {tag}
                     </span>
@@ -125,12 +125,12 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
           </div>
 
           {/* Content Sections */}
-          <div className="container mx-auto px-6 py-16 max-w-4xl">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16 max-w-4xl">
             {/* Overview */}
             {project.content.overview && (
-              <section className="mb-16">
-                <h3 className="text-3xl font-light text-foreground mb-6">Overview</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+              <section className="mb-10 sm:mb-12 md:mb-16">
+                <h3 className="text-2xl sm:text-3xl font-light text-foreground mb-4 sm:mb-6">Overview</h3>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   {project.content.overview}
                 </p>
               </section>
@@ -138,9 +138,9 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
 
             {/* Concept */}
             {project.content.concept && (
-              <section className="mb-16">
-                <h3 className="text-3xl font-light text-foreground mb-6">Concept</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+              <section className="mb-10 sm:mb-12 md:mb-16">
+                <h3 className="text-2xl sm:text-3xl font-light text-foreground mb-4 sm:mb-6">Concept</h3>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   {project.content.concept}
                 </p>
               </section>
@@ -148,9 +148,9 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
 
             {/* Application */}
             {project.content.application && (
-              <section className="mb-16">
-                <h3 className="text-3xl font-light text-foreground mb-6">Application</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+              <section className="mb-10 sm:mb-12 md:mb-16">
+                <h3 className="text-2xl sm:text-3xl font-light text-foreground mb-4 sm:mb-6">Application</h3>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   {project.content.application}
                 </p>
               </section>
@@ -158,9 +158,9 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
 
             {/* Outcome */}
             {project.content.outcome && (
-              <section className="mb-16">
-                <h3 className="text-3xl font-light text-foreground mb-6">Outcome</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+              <section className="mb-10 sm:mb-12 md:mb-16">
+                <h3 className="text-2xl sm:text-3xl font-light text-foreground mb-4 sm:mb-6">Outcome</h3>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   {project.content.outcome}
                 </p>
               </section>
@@ -168,21 +168,21 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
           </div>
 
           {/* Photo Grid Gallery */}
-          <div className="container mx-auto px-6 py-16 max-w-6xl">
-            <h3 className="text-3xl font-light text-foreground mb-8 text-center">Gallery</h3>
-            
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16 max-w-6xl">
+            <h3 className="text-2xl sm:text-3xl font-light text-foreground mb-6 sm:mb-8 text-center">Gallery</h3>
+
             {/* Masonry-style grid */}
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
               {project.files.map((file, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="break-inside-avoid mb-6 group cursor-pointer"
+                  className="break-inside-avoid mb-4 sm:mb-6 group cursor-pointer"
                   onClick={() => setCurrentImageIndex(index)}
                 >
-                  <div className="relative overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative overflow-hidden rounded-lg shadow-md sm:shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                     <img
                       src={encodeURI(file)}
                       alt={`${project.title} - Image ${index + 1}`}
@@ -213,9 +213,9 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: project.files.length * 0.1 + 0.2 }}
-                className="mt-12 text-center p-8 border border-border rounded-lg bg-secondary/30"
+                className="mt-8 sm:mt-10 md:mt-12 text-center p-6 sm:p-8 border border-border rounded-lg bg-secondary/30"
               >
-                <p className="text-xl text-muted-foreground italic">
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground italic">
                   You're viewing this ready-made project right now!
                 </p>
               </motion.div>
@@ -229,7 +229,7 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-[60] bg-black/90 flex items-center justify-center"
+                className="fixed inset-0 z-[60] bg-black/90 flex items-center justify-center p-4"
                 onClick={() => setCurrentImageIndex(null)}
               >
                 <button
@@ -237,9 +237,9 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
                     e.stopPropagation();
                     prevImage();
                   }}
-                  className="absolute left-4 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                  className="absolute left-2 sm:left-4 p-1.5 sm:p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
                 >
-                  <ChevronLeft className="w-8 h-8 text-white" />
+                  <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </button>
 
                 <button
@@ -247,34 +247,34 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
                     e.stopPropagation();
                     nextImage();
                   }}
-                  className="absolute right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
+                  className="absolute right-2 sm:right-4 p-1.5 sm:p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors"
                 >
-                  <ChevronRight className="w-8 h-8 text-white" />
+                  <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
                 </button>
 
                 <div onClick={(e) => e.stopPropagation()}>
                   <img
                     src={project.files[currentImageIndex]}
                     alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                    className="max-w-[90vw] max-h-[90vh] object-contain"
+                    className="max-w-[85vw] sm:max-w-[90vw] max-h-[85vh] sm:max-h-[90vh] object-contain"
                   />
                 </div>
 
                 <button
                   onClick={() => setCurrentImageIndex(null)}
-                  className="absolute top-4 right-4 p-2 text-white hover:bg-white/10 rounded-full transition-colors"
+                  className="absolute top-2 sm:top-4 right-2 sm:right-4 p-1.5 sm:p-2 text-white hover:bg-white/10 rounded-full transition-colors"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </motion.div>
             </AnimatePresence>
           )}
 
           {/* Footer */}
-          <div className="bg-secondary/30 py-16">
-            <div className="container mx-auto px-6 text-center">
-              <h3 className="text-2xl font-light text-foreground mb-4">Thank you for viewing</h3>
-              <p className="text-muted-foreground">
+          <div className="bg-secondary/30 py-10 sm:py-12 md:py-16">
+            <div className="container mx-auto px-4 sm:px-6 text-center">
+              <h3 className="text-xl sm:text-2xl font-light text-foreground mb-3 sm:mb-4">Thank you for viewing</h3>
+              <p className="text-sm sm:text-base text-muted-foreground">
                 This project showcases the intersection of design, creativity, and strategic thinking.
               </p>
             </div>

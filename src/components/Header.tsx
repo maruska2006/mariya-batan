@@ -81,16 +81,16 @@ export const Header = () => {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border py-4" : "bg-transparent py-6"
+        isScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border py-3 sm:py-4" : "bg-transparent py-4 sm:py-6"
       )}
     >
-      <nav className="container mx-auto px-6 flex justify-between items-center">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <AnimatedLogo
           onClick={() => navigate("/")}
           className="text-xl font-semibold text-foreground hover:text-foreground/70 transition-colors"
         />
-        
-        <div className="hidden md:flex gap-8">
+
+        <div className="hidden md:flex gap-4 lg:gap-6 xl:gap-8">
           {navigationItems.map((item) => (
             <DropdownMenu 
               key={item.label}
@@ -199,7 +199,7 @@ export const Header = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="md:hidden bg-background/95 backdrop-blur-lg border-b border-border"
           >
-            <div className="container mx-auto px-6 py-4 space-y-4">
+            <div className="container mx-auto px-4 sm:px-6 py-4 space-y-4">
               {navigationItems.map((item) => (
                 <div key={item.label} className="space-y-2">
                   <button
