@@ -32,7 +32,7 @@ export const AnimatedText = ({ text, className, delay = 0, highlightWords = [] }
           <span
             key={index}
             className={cn(
-              "inline-block opacity-0 mr-12",
+              "inline-block opacity-0 mr-2 sm:mr-4 md:mr-8 lg:mr-12",
               index < visibleWords && "animate-fade-in-word",
               isHighlighted && "font-bold text-foreground"
             )}
