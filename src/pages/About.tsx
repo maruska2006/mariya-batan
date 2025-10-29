@@ -139,6 +139,8 @@ const About = () => {
                   src={`${import.meta.env.BASE_URL}me.png`}
                   alt="Mariya"
                   className="w-64 h-64 object-cover rounded-lg"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               
@@ -165,6 +167,8 @@ const About = () => {
                 src={`${import.meta.env.BASE_URL}me.png`}
                 alt="Mariya"
                 className="w-150 h-150 object-cover float-right mb-1 -mt-32"
+                loading="lazy"
+                decoding="async"
               />
               
               {/* Text content with text wrapping */}

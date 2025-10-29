@@ -10,6 +10,7 @@ interface ProjectCardProps {
 
 export const ProjectCard = ({ title, description, image, index }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
     <div
@@ -18,14 +19,23 @@ export const ProjectCard = ({ title, description, image, index }: ProjectCardPro
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="aspect-[4/3] overflow-hidden bg-muted">
+      <div className="aspect-[4/3] overflow-hidden bg-muted relative">
+        {/* Skeleton loader background */}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-muted animate-pulse" />
+        )}
+
         <img
           src={image}
           alt={title}
           className={cn(
             "w-full h-full object-cover transition-all duration-700 ease-out",
-            isHovered && "scale-110"
+            isHovered && "scale-110",
+            isLoaded ? "opacity-100" : "opacity-0"
           )}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setIsLoaded(true)}
         />
         <div
           className={cn(

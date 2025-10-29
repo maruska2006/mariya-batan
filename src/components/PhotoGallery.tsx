@@ -18,6 +18,7 @@ interface PhotoGalleryProps {
 
 export const PhotoGallery = ({ project, isOpen, onClose }: PhotoGalleryProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => {
@@ -35,6 +36,10 @@ export const PhotoGallery = ({ project, isOpen, onClose }: PhotoGalleryProps) =>
 
   const goToImage = (index: number) => {
     setCurrentImageIndex(index);
+  };
+
+  const handleImageLoad = (index: number) => {
+    setLoadedImages(prev => new Set([...prev, index]));
   };
 
   // Handle keyboard events
@@ -91,6 +96,7 @@ export const PhotoGallery = ({ project, isOpen, onClose }: PhotoGalleryProps) =>
               src={project.files[0]}
               alt={project.title}
               className="w-full h-full object-cover"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute bottom-8 left-8 text-white">
@@ -128,11 +134,21 @@ export const PhotoGallery = ({ project, isOpen, onClose }: PhotoGalleryProps) =>
                   }}
                 >
                   <div className="relative overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    {/* Skeleton loader background */}
+                    {!loadedImages.has(index) && (
+                      <div className="absolute inset-0 bg-muted animate-pulse" />
+                    )}
+
                     <img
                       src={file}
                       alt={`${project.title} - Image ${index + 1}`}
-                      className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                      className={cn(
+                        "w-full h-auto transition-all duration-500 group-hover:scale-105",
+                        loadedImages.has(index) ? "opacity-100" : "opacity-0"
+                      )}
                       loading="lazy"
+                      decoding="async"
+                      onLoad={() => handleImageLoad(index)}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                     {/* Zoom icon on hover */}
@@ -181,6 +197,7 @@ export const PhotoGallery = ({ project, isOpen, onClose }: PhotoGalleryProps) =>
                   src={project.files[currentImageIndex!]}
                   alt={`${project.title} - Image ${currentImageIndex! + 1}`}
                   className="w-full h-auto max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                  decoding="async"
                 />
                 
                 {/* Navigation Arrows */}

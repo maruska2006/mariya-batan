@@ -24,6 +24,7 @@ interface ProjectCaseStudyProps {
 
 export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set());
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => {
@@ -41,6 +42,10 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
 
   const goToImage = (index: number) => {
     setCurrentImageIndex(index);
+  };
+
+  const handleImageLoad = (index: number) => {
+    setLoadedImages(prev => new Set([...prev, index]));
   };
 
   // Handle keyboard events
@@ -102,6 +107,7 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
               src={project.id === "portfolio-website" ? `${import.meta.env.BASE_URL}DFDC65E3-4603-47BD-8BBD-259F4D2795F5_1_105_c.png` : project.files[0]}
               alt={project.title}
               className="w-full h-full object-cover"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-black/40" />
             <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 right-4 sm:right-6 md:right-8 text-white">
@@ -183,11 +189,21 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
                   onClick={() => setCurrentImageIndex(index)}
                 >
                   <div className="relative overflow-hidden rounded-lg shadow-md sm:shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    {/* Skeleton loader background */}
+                    {!loadedImages.has(index) && (
+                      <div className="absolute inset-0 bg-muted animate-pulse" />
+                    )}
+
                     <img
                       src={encodeURI(file)}
                       alt={`${project.title} - Image ${index + 1}`}
-                      className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                      className={cn(
+                        "w-full h-auto transition-all duration-500 group-hover:scale-105",
+                        loadedImages.has(index) ? "opacity-100" : "opacity-0"
+                      )}
                       loading="lazy"
+                      decoding="async"
+                      onLoad={() => handleImageLoad(index)}
                       onError={(e) => {
                         console.log("Failed to load image:", file);
                         e.currentTarget.style.display = 'none';
@@ -257,6 +273,7 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
                     src={project.files[currentImageIndex]}
                     alt={`${project.title} - Image ${currentImageIndex + 1}`}
                     className="max-w-[85vw] sm:max-w-[90vw] max-h-[85vh] sm:max-h-[90vh] object-contain"
+                    decoding="async"
                   />
                 </div>
 

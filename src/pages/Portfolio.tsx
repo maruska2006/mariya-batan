@@ -15,6 +15,7 @@ const getImagePath = (path: string) => `${import.meta.env.BASE_URL}${path.starts
 const Portfolio = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [loadedThumbnails, setLoadedThumbnails] = useState<Set<string>>(new Set());
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -53,6 +54,10 @@ const Portfolio = () => {
     // Simply remove project parameter from URL
     const cleanUrl = '/portfolio';
     window.history.replaceState({}, '', cleanUrl);
+  };
+
+  const handleThumbnailLoad = (projectId: string) => {
+    setLoadedThumbnails(prev => new Set([...prev, projectId]));
   };
 
   const categories = [
@@ -536,6 +541,7 @@ const Portfolio = () => {
                     alt="Hands illustration"
                     className="w-full max-w-24 sm:max-w-28 md:max-w-32 h-auto object-contain opacity-0 animate-bounce-in"
                     style={{ animationDelay: "0.3s" }}
+                    decoding="async"
                   />
                 </div>
 
@@ -593,10 +599,21 @@ const Portfolio = () => {
                       >
                     {/* Project Cover Image */}
                     <div className="relative w-full flex-shrink-0 overflow-hidden" style={{ height: '200px', '@media (minWidth: 640px)': { height: '225px' }, '@media (minWidth: 768px)': { height: '250px' } }}>
+                      {/* Skeleton loader background */}
+                      {!loadedThumbnails.has(project.id) && (
+                        <div className="absolute inset-0 bg-muted animate-pulse" />
+                      )}
+
                       <img
                         src={project.thumbnail}
                         alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        className={cn(
+                          "w-full h-full object-cover transition-all duration-500 group-hover:scale-110",
+                          loadedThumbnails.has(project.id) ? "opacity-100" : "opacity-0"
+                        )}
+                        loading="lazy"
+                        decoding="async"
+                        onLoad={() => handleThumbnailLoad(project.id)}
                       />
                     </div>
 
