@@ -109,7 +109,7 @@ const About = () => {
           </div>
           
           <div className="container mx-auto max-w-6xl">
-            <h1 className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-light leading-tight" style={{ wordSpacing: '0.5em', letterSpacing: '-0.050em' }}>
+            <h1 className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-light leading-tight" style={{ wordSpacing: '5.0em', letterSpacing: '-0.050em' }}>
               <AnimatedText
                 text="Design that moves through emotion, built with intention and quiet precision."
                 className="text-foreground"
