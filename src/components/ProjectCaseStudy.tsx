@@ -102,11 +102,11 @@ export const ProjectCaseStudy = ({ project, isOpen, onClose }: ProjectCaseStudyP
           </div>
 
           {/* Project Cover */}
-          <div className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] overflow-hidden">
+          <div className="relative h-[40vh] sm:h-[50vh] md:h-[60vh] overflow-hidden bg-muted">
             <img
               src={project.id === "portfolio-website" ? `${import.meta.env.BASE_URL}DFDC65E3-4603-47BD-8BBD-259F4D2795F5_1_105_c.png` : project.files[0]}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className={`w-full h-full ${project.id === "portfolio-website" ? "object-contain" : "object-cover"}`}
               decoding="async"
             />
             <div className="absolute inset-0 bg-black/40" />
